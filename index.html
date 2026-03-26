@@ -65,7 +65,7 @@ body {
 /* BANNER */
 .banner {
     background-color: #F1701F;
-    height: 300px;
+    height: 380px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -73,7 +73,9 @@ body {
 }
 
 .banner img {
-    max-height: 200px;
+    max-height: 85%;
+    max-width: 90%;
+    width: auto;
     animation: fadeIn 1.5s;
 }
 
@@ -82,7 +84,7 @@ body {
     to {opacity: 1;}
 }
 
-/* TEXTO IZQUIERDA */
+/* TEXTO SUPERIOR */
 .top-left-text {
     position: absolute;
     top: -50px;
@@ -173,7 +175,7 @@ body {
     border-radius: 10px;
 }
 
-/* FOOTER TARJETAS */
+/* FOOTER */
 .footer-section {
     padding: 60px 20px;
     background: linear-gradient(135deg, #FF7C3F, #FFB97B);
@@ -209,6 +211,27 @@ body {
     box-shadow: 0 10px 20px rgba(0,0,0,0.3);
 }
 
+/* BOTÓN WHATSAPP */
+.whatsapp-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25D366;
+    color: white;
+    font-size: 30px;
+    padding: 15px 18px;
+    border-radius: 50%;
+    text-decoration: none;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    z-index: 1000;
+    transition: 0.3s;
+}
+
+.whatsapp-btn:hover {
+    transform: scale(1.1);
+    background-color: #1ebe5d;
+}
+
 /* RESPONSIVE */
 @media (max-width: 768px) {
 
@@ -218,7 +241,6 @@ body {
 
     .sidebar {
         left: -220px;
-        top: 0;
         z-index: 999;
     }
 
@@ -228,11 +250,11 @@ body {
     }
 
     .banner {
-        height: 200px;
+        height: 250px;
     }
 
     .banner img {
-        max-height: 120px;
+        max-height: 80%;
     }
 
     .dynamic-text {
@@ -252,10 +274,8 @@ body {
 
 <body>
 
-<!-- MENÚ HAMBURGUESA -->
 <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
-<!-- SIDEBAR -->
 <div class="sidebar">
     <a href="#">Quienes somos</a>
     <a href="#">Visualiza tu próximo proyecto</a>
@@ -264,14 +284,12 @@ body {
 
 <div class="main">
 
-    <!-- BANNER -->
     <div class="banner">
         <img src="logo.png">
         <div class="top-left-text">Soluciones para tu negocio</div>
         <div class="dynamic-text" id="dynamicText"></div>
     </div>
 
-    <!-- LANDING -->
     <div class="landing">
 
         <div class="hero">
@@ -305,7 +323,6 @@ body {
 
     </div>
 
-    <!-- SECCIÓN FINAL -->
     <div class="footer-section">
         <h2>Te ayudamos a diseñar tu página web para que convierta visitas en clientes</h2>
 
@@ -318,13 +335,16 @@ body {
 
 </div>
 
+<!-- BOTÓN WHATSAPP -->
+<a href="https://wa.me/5491123456789?text=Hola,%20quiero%20una%20pagina%20web" class="whatsapp-btn" target="_blank">
+💬
+</a>
+
 <script>
-// MENÚ HAMBURGUESA
 function toggleMenu() {
     document.querySelector(".sidebar").classList.toggle("active");
 }
 
-// TEXTO DINÁMICO
 const messages = ["¡Bienvenidos!", "Tu web profesional", "Más clientes online"];
 let index = 0;
 const text = document.getElementById("dynamicText");
@@ -342,13 +362,11 @@ function changeText() {
 changeText();
 setInterval(changeText, 3000);
 
-// ANIMACIÓN TARJETAS
 const cards = document.querySelectorAll(".card");
 cards.forEach((card,i)=>{
     setTimeout(()=>card.classList.add("show"),800+i*400);
 });
 
-// CERRAR MENÚ AL HACER CLICK
 document.querySelectorAll(".sidebar a").forEach(link => {
     link.addEventListener("click", () => {
         document.querySelector(".sidebar").classList.remove("active");
