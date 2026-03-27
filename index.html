@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DIGITAL CAT SERVICES</title>
+
+<style>
+
+/* RESET */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* MENÚ */
+.menu-toggle {
+    display: none;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    font-size: 30px;
+    color: white;
+    background: #F1701F;
+    padding: 8px 12px;
+    border-radius: 8px;
+    z-index: 1000;
+    cursor: pointer;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 220px;
+    background: #222;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding-top: 60px;
+    transition: 0.3s;
+}
+
+.sidebar a {
+    display: block;
+    color: white;
+    padding: 15px;
+    text-decoration: none;
+}
+
+.sidebar a:hover {
+    background: #ff6600;
+}
+
+/* MAIN */
+.main {
+    margin-left: 220px;
+}
+
+/* BANNER */
+.banner {
+    background: #F1701F;
+    min-height: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.banner img {
+    max-width: 90%;
+    max-height: 200px;
+}
+
+/* TEXTO */
+.dynamic-text {
+    margin-top: 15px;
+    color: white;
+    font-size: 40px;
+    text-align: center;
+}
+
+.dynamic-text::after {
+    content: "|";
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    50% {opacity:0;}
+}
+
+/* CONTENIDO */
+.landing {
+    padding: 30px 15px;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 28px;
+}
+
+.hero p {
+    font-size: 16px;
+}
+
+/* BOTÓN */
+.cta-btn {
+    background: #F1701F;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+/* SERVICIOS */
+.service-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.service-card {
+    background: #f4f4f4;
+    padding: 15px;
+    border-radius: 10px;
+    width: 90%;
+}
+
+/* BENEFICIOS */
+.benefit-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.benefit-card {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    font-weight: bold;
+
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 0.5s;
+}
+
+.benefit-card.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* TARJETAS */
+.footer-section {
+    padding: 40px 15px;
+    background: linear-gradient(135deg,#FF7C3F,#FFB97B);
+    text-align:center;
+}
+
+.cards {
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.card {
+    background: rgba(255,255,255,0.2);
+    padding:15px;
+    border-radius:10px;
+    opacity:0;
+    transform: translateY(-20px);
+    transition:0.5s;
+}
+
+.card.show {
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* WHATSAPP */
+.whatsapp-btn {
+    position:fixed;
+    bottom:15px;
+    right:15px;
+    background:#25D366;
+    color:white;
+    font-size:24px;
+    padding:12px;
+    border-radius:50%;
+}
+
+/* 📱 MOBILE */
+@media(max-width:768px){
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .sidebar {
+        left: -220px;
+    }
+
+    .sidebar.active {
+        left: 0;
+    }
+
+    .main {
+        margin-left: 0;
+    }
+
+    .dynamic-text {
+        font-size: 26px;
+    }
+
+    .banner img {
+        max-height: 150px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+<div class="sidebar">
+    <a href="#">Quienes somos</a>
+    <a href="#">Visualiza tu proyecto</a>
+    <a href="#">Contáctanos</a>
+</div>
+
+<div class="main">
+
+<div class="banner">
+    <img src="logo.png">
+    <div class="dynamic-text" id="dynamicText"></div>
+</div>
+
+<div class="landing">
+
+    <div class="hero">
+        <h1>Tu página web lista en pocos días</h1>
+        <p>Diseñamos sitios modernos para negocios.</p>
+        <a href="#" class="cta-btn">Solicitar</a>
+    </div>
+
+    <div class="service-cards">
+        <div class="service-card">Páginas web</div>
+        <div class="service-card">Landing pages</div>
+        <div class="service-card">Diseño económico</div>
+    </div>
+
+    <div class="benefit-cards">
+        <div class="benefit-card">🚀 Entrega rápida</div>
+        <div class="benefit-card">💰 Precios accesibles</div>
+        <div class="benefit-card">📱 Diseño responsive</div>
+    </div>
+
+</div>
+
+<div class="footer-section">
+    <div class="cards">
+        <div class="card">Negocios locales</div>
+        <div class="card">Instagram</div>
+        <div class="card">Económicas</div>
+    </div>
+</div>
+
+</div>
+
+<a href="#" class="whatsapp-btn">💬</a>
+
+<script>
+function toggleMenu(){
+    document.querySelector(".sidebar").classList.toggle("active");
+}
+
+// TYPEWRITER
+const msgs=["¡Bienvenidos!","Tu web profesional","Más clientes online"];
+let i=0,j=0,del=false;
+const el=document.getElementById("dynamicText");
+
+function type(){
+    let txt=msgs[i];
+    el.textContent=txt.substring(0,j);
+
+    if(!del){
+        j++;
+        if(j>txt.length){del=true;setTimeout(type,1200);return;}
+    } else {
+        j--;
+        if(j===0){del=false;i=(i+1)%msgs.length;}
+    }
+
+    setTimeout(type,del?40:80);
+}
+type();
+
+// animaciones
+document.querySelectorAll(".card").forEach((c,i)=>{
+    setTimeout(()=>c.classList.add("show"),500+i*300);
+});
+document.querySelectorAll(".benefit-card").forEach((c,i)=>{
+    setTimeout(()=>c.classList.add("show"),400+i*300);
+});
+</script>
+
+</body>
+</html>
