@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiénes Somos - Digital Cat Services</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin:0;
+    font-family: 'Poppins', Arial, sans-serif;
+    background:#fff5f0;
+    overflow-x: hidden;
+}
+
+/* BOTÓN */
+.back-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background:#F1701F;
+    color:white;
+    padding:12px 20px;
+    border-radius:25px;
+    font-weight:700;
+    text-decoration:none;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* 🔥 BANNER FIJO */
+.banner {
+    background: linear-gradient(-45deg, #F1701F, #FF9A4D, #FFB97B, #F1701F);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    color:white;
+    text-align:center;
+
+    min-height:200px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    padding:20px;
+    border-bottom-left-radius:50px;
+    border-bottom-right-radius:50px;
+}
+
+@keyframes gradientBG {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+.banner h1 {
+    font-size:48px;
+    margin:0;
+}
+
+/* 🔥 FADE SUAVE */
+.dynamic-text {
+    margin-top:15px;
+    font-size:24px;
+    font-weight:600;
+
+    height:30px;
+    line-height:30px;
+    min-width:260px;
+
+    position:relative;
+}
+
+.fade {
+    opacity:0;
+    transition:opacity 0.6s ease;
+}
+
+.fade.show {
+    opacity:1;
+}
+
+/* CONTENIDO */
+.main-content {
+    max-width:800px;
+    margin:40px auto;
+    background:white;
+    padding:40px 30px;
+    border-radius:20px;
+    box-shadow:0 15px 35px rgba(0,0,0,0.15);
+    text-align:center;
+}
+
+.main-content h2 {
+    color:#F1701F;
+}
+
+.cta-btn {
+    display:inline-block;
+    margin-top:25px;
+    background:#F1701F;
+    color:white;
+    padding:15px 30px;
+    border-radius:50px;
+    text-decoration:none;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    .banner h1 {font-size:36px;}
+    .dynamic-text {font-size:20px;}
+}
+</style>
+</head>
+<body>
+
+<a href="index.html" class="back-btn">← Volver</a>
+
+<div class="banner">
+    <h1>🚀 Impulsamos tu negocio al mundo digital</h1>
+
+    <div class="dynamic-text">
+        <span id="text" class="fade show">Web profesional</span>
+    </div>
+</div>
+
+<div class="main-content">
+    <h2>Quiénes Somos</h2>
+    <p>Somos un equipo dedicado a crear <strong>páginas web modernas</strong> y mejorar tu <strong>presencia en Instagram</strong>.</p>
+
+    <a href="#" class="cta-btn">Contactar</a>
+</div>
+
+<script>
+const texts = ["Web profesional","Más clientes online","Instagram + Web"];
+let i = 0;
+
+const el = document.getElementById("text");
+
+setInterval(() => {
+    el.classList.remove("show");
+
+    setTimeout(() => {
+        i = (i + 1) % texts.length;
+        el.textContent = texts[i];
+        el.classList.add("show");
+    }, 600);
+
+}, 2500);
+</script>
+
+</body>
+</html>

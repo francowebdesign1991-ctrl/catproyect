@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Servicios - Digital Services</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', Arial, sans-serif;
+    background: #fff5f0;
+    overflow-x: hidden;
+}
+
+/* BOTÓN VOLVER */
+.back-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background:#F1701F;
+    color:white;
+    padding:12px 20px;
+    border-radius:25px;
+    font-weight:700;
+    font-size:16px;
+    text-decoration:none;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+    transition:0.3s;
+    z-index:1000;
+}
+
+.back-btn:hover {
+    background:#ff9a4d;
+    transform: scale(1.05);
+}
+
+/* 🔥 BANNER FIJO */
+.banner {
+    background: linear-gradient(-45deg, #F1701F, #FF9A4D, #FFB97B, #F1701F);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    color: white;
+    text-align: center;
+
+    min-height: 200px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    padding:20px;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+
+@keyframes gradientBG {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+.banner h1 {
+    font-size: 48px;
+    font-weight: 700;
+    margin: 0;
+}
+
+/* 🔥 TEXTO FADE PRO */
+.banner .dynamic-text {
+    margin-top: 15px;
+    font-size: 24px;
+    font-weight: 600;
+
+    height: 30px;
+    line-height: 30px;
+    min-width: 260px;
+
+    position: relative;
+    overflow: hidden;
+}
+
+.fade-text {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.fade-text.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* CONTENIDO */
+.main-content {
+    max-width: 800px;
+    margin: 40px auto;
+    background: white;
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    line-height: 1.6;
+    text-align: center;
+}
+
+.main-content h2 {
+    color: #F1701F;
+    font-size: 32px;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.main-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.main-content ul li {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    position: relative;
+    padding-left: 35px;
+}
+
+.main-content ul li::before {
+    content: "✔";
+    color: #F1701F;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/* CTA */
+.cta-btn {
+    display: inline-block;
+    margin-top: 25px;
+    background: #F1701F;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 20px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.cta-btn:hover {
+    background: #ff9a4d;
+    transform: scale(1.05);
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    .back-btn {font-size:14px; padding:10px 18px;}
+    .banner h1 {font-size: 36px;}
+    .banner .dynamic-text {font-size: 20px;}
+    .main-content h2 {font-size: 28px;}
+    .main-content ul li {font-size: 16px;}
+    .cta-btn {font-size: 18px; padding: 12px 25px;}
+}
+</style>
+</head>
+<body>
+
+<a href="index.html" class="back-btn">← Volver</a>
+
+<div class="banner">
+    <h1>🚀 Conseguimos clientes para tu negocio</h1>
+
+    <div class="dynamic-text" id="dynamicText">
+        <span class="fade-text active">Landing profesional</span>
+    </div>
+</div>
+
+<div class="main-content">
+    <h2>Te ayudamos a:</h2>
+    <ul>
+        <li>Tener una web profesional</li>
+        <li>Mejorar tu Instagram</li>
+        <li>Generar más consultas reales</li>
+    </ul>
+
+    <a href="https://wa.me/549XXXXXXXXXX?text=Hola!%20quiero%20conocer%20los%20servicios" target="_blank" class="cta-btn">
+        📲 Escribinos y te contamos cómo
+    </a>
+</div>
+
+<script>
+const msgs = ["Landing profesional","Más clientes online","Web + Instagram"];
+let index = 0;
+
+const container = document.getElementById("dynamicText");
+
+function changeText() {
+    const current = container.querySelector(".fade-text");
+
+    current.classList.remove("active");
+
+    setTimeout(() => {
+        index = (index + 1) % msgs.length;
+
+        const newText = document.createElement("span");
+        newText.className = "fade-text";
+        newText.textContent = msgs[index];
+
+        container.innerHTML = "";
+        container.appendChild(newText);
+
+        setTimeout(() => {
+            newText.classList.add("active");
+        }, 50);
+
+    }, 500);
+}
+
+setInterval(changeText, 2500);
+</script>
+
+</body>
+</html>
