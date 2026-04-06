@@ -236,10 +236,22 @@ body {
     bottom:15px;
     right:15px;
     background:#25D366;
-    color:white;
-    font-size:24px;
-    padding:12px;
     border-radius:50%;
+    width:55px;
+    height:55px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:0.3s;
+}
+
+.whatsapp-btn img {
+    width:30px;
+    height:30px;
+}
+
+.whatsapp-btn:hover {
+    transform: scale(1.15);
 }
 
 /* MOBILE */
@@ -369,7 +381,10 @@ body {
 
 </div>
 
-<a href="https://wa.me/549XXXXXXXXXX" class="whatsapp-btn" target="_blank">💬</a>
+<!-- WHATSAPP -->
+<a href="https://wa.me/549XXXXXXXXXX" class="whatsapp-btn" target="_blank">
+    <img src="whatsapp.png" alt="WhatsApp">
+</a>
 
 <script>
 
